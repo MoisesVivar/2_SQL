@@ -1,0 +1,42 @@
+
+SQL Queries:
+¿Cuál es el nombre aeropuerto que ha tenido mayor movimiento durante el año?
+SELECT nombre_aeropuertos FROM aeropuertos
+JOIN vuelos
+ON aeropuertos.id_aeropuerto = vuelos.id_aeropuerto
+GROUP BY nombre_aeropuertos
+ORDER BY COUNT(nombre_aeropuertos) DESC
+LIMIT 1;
+OUTPUT:
++--------------------+
+| nombre_aeropuertos |
++--------------------+
+| Benito Juarez      |
++--------------------+
+
+¿Cuál es el nombre aerolínea que ha realizado mayor número de vuelos durante el año?
+SELECT nombre_aerolinea FROM aerolineas
+JOIN vuelos
+ON aerolineas.id_aerolinea = vuelos.id_aerolinea
+GROUP BY nombre_aerolinea
+ORDER BY COUNT(nombre_aerolinea) DESC
+LIMIT 1;
+OUTPUT:
++------------------+
+| nombre_aerolinea |
++------------------+
+| Aeromar          |
++------------------+
+
+¿En qué día se han tenido mayor número de vuelos?
+SELECT dia FROM vuelos
+GROUP BY dia
+ORDER BY COUNT(dia) DESC
+LIMIT 1;
+OUTPUT:
+
++------------+
+| dia        |
++------------+
+| 2021-05-02 |
++------------+
